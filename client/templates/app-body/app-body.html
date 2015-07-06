@@ -1,0 +1,33 @@
+<template name="appBody">
+
+    <div id="appBodyTitle">
+        <h1>Blog with new car smell! :)</h1>
+    </div>
+
+    <div id="userInfo">
+        {{#if currentUser}}
+            <p>Welcome {{currentUsername}}!</p>
+            <a href="#" class="js-logout btn-secondary">Logout</a>
+        {{else}}
+            <div class="btns-group">
+                <a href="{{pathFor 'signin'}}" class="btn-secondary">Sign In</a>
+                <a href="{{pathFor 'join'}}" class="btn-secondary">Join</a>
+            </div>
+        {{/if}}
+    </div>
+
+    {{#if currentUser}}
+    <div id="newPost">
+        <a href="{{pathFor 'newPost'}}" class="btn-secondary">New Post</a>
+    </div>
+    {{/if}}
+
+    <div id="posts">
+        {{#each posts}}
+            <a href="{{pathFor 'post'}}">
+                <h2>{{this.title}}</h2>
+            </a>
+            <p>{{this.text}}</p>
+        {{/each}}
+    </div>
+</template>
